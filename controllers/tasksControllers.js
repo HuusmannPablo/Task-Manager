@@ -1,6 +1,6 @@
-const Task = require('../models/Task')
-// Requests and Responses
+const Task = require('../models/TaskModels')
 
+// Controllers
 const getAllTasks = async (req, res)=> {
     try {
         const tasks = await Task.find({})

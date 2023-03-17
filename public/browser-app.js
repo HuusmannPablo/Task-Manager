@@ -4,18 +4,20 @@ const formDOM = document.querySelector('.task-form')
 const taskInputDOM = document.querySelector('.task-input')
 const formAlertDOM = document.querySelector('.form-alert')
 
-// Load tasks from /api/tasks
+// Load tasks from /api/v1/tasks
 const showTasks = async () => {
   loadingDOM.style.visibility = 'visible'
   try {
     const {
       data: { tasks },
     } = await axios.get('/api/v1/tasks')
+    // If there are no tasks, hide DOM and show the message
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
       loadingDOM.style.visibility = 'hidden'
       return
     }
+    // Format tasks
     const allTasks = tasks
       .map((task) => {
         const { completed, _id: taskID, name } = task
@@ -48,8 +50,7 @@ const showTasks = async () => {
 
 showTasks()
 
-// Delete task /api/tasks/:id
-
+// Delete task /api/v1/tasks/:id
 tasksDOM.addEventListener('click', async (e) => {
   const el = e.target
   if (el.parentElement.classList.contains('delete-btn')) {
@@ -65,8 +66,7 @@ tasksDOM.addEventListener('click', async (e) => {
   loadingDOM.style.visibility = 'hidden'
 })
 
-// Form
-
+// Form to update the task
 formDOM.addEventListener('submit', async (e) => {
   e.preventDefault()
   const name = taskInputDOM.value
