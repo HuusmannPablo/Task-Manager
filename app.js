@@ -9,24 +9,10 @@ app.use(express.static('./public'))
 app.use(express.json())
 
 
-// routes
-
-// I define 'tasks' as my routes, and then put every route in the tasks.js routes file
+// ROUTES
+// I define 'tasks' as my route, and then put every route in the tasks.js routes file
 // This way, I only use .use and define the operations in a different file
 app.use('/api/v1/tasks', tasks)
-
-    // get all the tasks
-app.get('/api/v1/tasks')
-    // create new task
-app.post('/api/v1/tasks')  
-    // get single task
-app.get('/api/v1/tasks/:id')  
-    // update task
-app.patch('/api/v1/tasks/:id')  
-    // delete task
-app.delete('/api/v1/tasks/:id')  
-
-
 
 const port = 3000;
 
