@@ -7,7 +7,7 @@ const {
     getTask,
     updateTask,
     deleteTask,
-} = require('../controllers/tasksControllers')
+} = require('../controllers/tasks-controllers')
 
 router
     .route('/')
